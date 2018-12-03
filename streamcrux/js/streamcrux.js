@@ -72,7 +72,7 @@ function fillContent( stepNr )
 				}
 				html += '</div></div>';
 				$( "#games" ).prepend( html );
-				// get game names for tracking
+				// get game names for tracking - old code
 				/*for( i=0; i<games.length; i++ ) {
 					requestData( "get_game", {s0: games[i]["MasterGameID"]}, function( game ) {
 						$( ".pick-game-button[data-id=" + game["MasterGameID"]+"] .game" ).attr( "id", "game-"+game["name"].replace( / /g, "" ) );
