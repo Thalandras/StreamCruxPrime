@@ -59,7 +59,7 @@ function fillContent( stepNr )
 					else html += '<div class="game-card">';
 
 					html += '<a href="" class="w-inline-block pick-game-button" data-id="' + games[i]["MasterGameID"] + '">' +
-					'<img src="' + src + '" alt="" class="game"></a>' +
+					'<img src="' + src + '" alt="" class="game"' + 'id=' + '"game-' + games[i]["name"] + '"></a>' +
           			'<p class="game-name">' + games[i]["name"] + '</p>' +
           			'<p class="active-streams">' + + games[i]["stream_count"] +' Streamers</p></div>';
           			if( (i+1) % 2 == 0 ) {
@@ -73,11 +73,11 @@ function fillContent( stepNr )
 				html += '</div></div>';
 				$( "#games" ).prepend( html );
 				// get game names for tracking
-				for( i=0; i<games.length; i++ ) {
+				/*for( i=0; i<games.length; i++ ) {
 					requestData( "get_game", {s0: games[i]["MasterGameID"]}, function( game ) {
 						$( ".pick-game-button[data-id=" + game["MasterGameID"]+"] .game" ).attr( "id", "game-"+game["name"].replace( / /g, "" ) );
 					});
-				}
+				}*/
 				$( ".pick-game-button" ).click( function( event ) {
 					event.preventDefault();
 					state["game"] = $( this ).attr( "data-id" );
