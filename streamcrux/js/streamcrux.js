@@ -21,6 +21,12 @@ var userData = {};
 var streamData = {};
 var gameData = {};
 
+
+
+$(".close-cross").click(function(){
+	$(".popup").fadeOut(500)
+})
+
 function displayStep( stepId, keepContent = false )
 {
 	if( !keepContent ) {
@@ -72,12 +78,6 @@ function fillContent( stepNr )
 				}
 				html += '</div></div>';
 				$( "#games" ).prepend( html );
-				// get game names for tracking - old code
-				/*for( i=0; i<games.length; i++ ) {
-					requestData( "get_game", {s0: games[i]["MasterGameID"]}, function( game ) {
-						$( ".pick-game-button[data-id=" + game["MasterGameID"]+"] .game" ).attr( "id", "game-"+game["name"].replace( / /g, "" ) );
-					});
-				}*/
 				$( ".pick-game-button" ).click( function( event ) {
 					event.preventDefault();
 					state["game"] = $( this ).attr( "data-id" );
@@ -202,7 +202,7 @@ function fillContent( stepNr )
 }
 function loadSuggestions()
 {
-	// check wether step has been updated
+	// check whether step has been updated
 	if( state["step"] != 4 ) return;
 	var html = '';
 	for( i=0; i<suggestionData.length; i++ ) {
@@ -267,6 +267,7 @@ $( document ).ready( function() {
 		displayStep( 1 );
 		window.history.pushState( state, "", "step1" );
 	});
+	$(".popup").css("display","flex").hide().fadeIn(1500)
 });
 
 window.addEventListener( 'popstate', event => {
