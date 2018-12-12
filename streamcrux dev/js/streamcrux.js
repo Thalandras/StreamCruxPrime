@@ -22,11 +22,6 @@ var streamData = {};
 var gameData = {};
 
 
-
-$(".close-cross").click(function(){
-	$(".popup").fadeOut(500)
-})
-
 function displayStep( stepId, keepContent = false )
 {
 	if( !keepContent ) {
@@ -260,6 +255,13 @@ function requestData( cmd, params, callback )
 	});
 }
 
+
+//Allows for popup button hide to work
+$(".not-now").click(function(){
+	$(".popup").fadeOut(500)
+})
+
+
 $( document ).ready( function() {
 	window.history.pushState( state, "", "" );
 	$( "#start-button" ).click( function( event ) {
@@ -267,7 +269,15 @@ $( document ).ready( function() {
 		displayStep( 1 );
 		window.history.pushState( state, "", "step1" );
 	});
-	$(".popup").css("display","flex").hide().fadeIn(1500)
+	//Popup appearance
+	$(".popup").css("display","flex").hide()
+	var count = getCookie("poppercookie");
+	if (count == 1) {
+		$(".popup").css("display","flex").hide().fadeIn(1500)
+	}
+	else {
+		setCookie("poppercookie","1",7);
+	}
 });
 
 window.addEventListener( 'popstate', event => {
