@@ -261,6 +261,14 @@ $(".not-now").click(function(){
 	$(".popup").fadeOut(500)
 })
 
+function isMobile() {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	}
+	
+	if (!isMobile()) {
+	//place script you don't want to run on mobile here
+	
+	}
 
 $( document ).ready( function() {
 	window.history.pushState( state, "", "" );
@@ -272,7 +280,7 @@ $( document ).ready( function() {
 	//Popup appearance
 	$(".popup").css("display","flex").hide()
 	var count = getCookie("poppercookie");
-	if (count == 1) {
+	if (count == 1 && !isMobile()) {
 		$(".popup").css("display","flex").hide().fadeIn(1500)
 	}
 	else {

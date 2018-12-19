@@ -707,7 +707,7 @@ a {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex;
+  display: none;
   width: 240px;
   height: 260px;
   -webkit-box-orient: vertical;
